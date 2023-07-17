@@ -11,7 +11,7 @@ export class CategoryPipe implements PipeTransform {
       case 'back-end':
         return 'computer';
       case 'mobile':
-        return 'mobile';
+        return 'smartphone';
     }
     return 'code';
   }
