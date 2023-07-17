@@ -14,7 +14,6 @@ export class CoursesService {
   list(): Observable<Course[]> {
     return this.http.get<Course[]>(this.API).pipe(
       first(),
-      delay(2000),
       tap((courses) => console.log(courses))
     );
   }
