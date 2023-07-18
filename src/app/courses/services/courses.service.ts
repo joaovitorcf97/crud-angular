@@ -9,12 +9,16 @@ import { Course } from '../model/course';
 export class CoursesService {
   private readonly API = 'api/courses';
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) {}
 
   list(): Observable<Course[]> {
     return this.http.get<Course[]>(this.API).pipe(
       first(),
       tap((courses) => console.log(courses))
     );
+  }
+
+  save(record: Course): Observable<Course> {
+    return this.http.post<Course>(this.API, record).pipe(first());
   }
 }
