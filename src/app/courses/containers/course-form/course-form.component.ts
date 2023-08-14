@@ -23,6 +23,7 @@ export class CourseFormComponent {
   ) {}
 
   onSubmit() {
+    console.log(this.form.value);
     this.coursesService.save(this.form.value).subscribe({
       next: (data) => this.onSuccess(),
       error: (error) => this.onError(),
