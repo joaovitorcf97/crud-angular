@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Observable, catchError, of } from 'rxjs';
@@ -11,7 +11,7 @@ import { CoursesService } from '../../services/courses.service';
   templateUrl: './courses.component.html',
   styleUrls: ['./courses.component.scss'],
 })
-export class CoursesComponent implements OnInit {
+export class CoursesComponent {
   courses$: Observable<Course[]>;
 
   constructor(
@@ -34,9 +34,11 @@ export class CoursesComponent implements OnInit {
     });
   }
 
-  ngOnInit(): void {}
-
   onAdd() {
     this.router.navigate(['new'], { relativeTo: this.route });
+  }
+
+  onEdit(course: Course) {
+    this.router.navigate(['edit', course._id], { relativeTo: this.route });
   }
 }
