@@ -69,19 +69,11 @@ export class CourseFormComponent implements OnInit {
     }
 
     if (field?.hasError('minlength')) {
-      const requiredLength: number = field.errors
-        ? field.errors['minLength']['requiredLength']
-        : 5;
-
-      return `Campo deve ter no mínimo ${requiredLength} caracteres.`;
+      return `Campo deve ter no mínimo 5 caracteres.`;
     }
 
     if (field?.hasError('maxlength')) {
-      const requiredLength: number = field.errors
-        ? field.errors['maxLength']['requiredLength']
-        : 200;
-
-      return `Campo deve ter no máximo ${requiredLength} caracteres.`;
+      return `Campo deve ter no máximo 100 caracteres.`;
     }
 
     return 'Campo inválido';
