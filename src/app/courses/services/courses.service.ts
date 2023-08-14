@@ -23,9 +23,8 @@ export class CoursesService {
   }
 
   save(record: Partial<Course>) {
-    if (record._id) {
-      return this.update(record);
-    }
+    if (record._id) return this.update(record);
+
     return this.create(record);
   }
 
@@ -33,9 +32,13 @@ export class CoursesService {
     return this.http.post<Course>(this.API, record).pipe(first());
   }
 
-  private update(record: Partial<Course>): Observable<Course> {
+  private update(record: Partial<Course>) {
     return this.http
       .put<Course>(`${this.API}/${record._id}`, record)
       .pipe(first());
+  }
+
+  remove(id: string) {
+    return this.http.delete<Course>(`${this.API}/${id}`).pipe(first());
   }
 }

@@ -28,6 +28,7 @@ export class CourseFormComponent implements OnInit {
 
   ngOnInit(): void {
     const course: Course = this.route.snapshot.data['course'];
+
     this.form.setValue({
       _id: course._id,
       name: course.name,
@@ -37,6 +38,7 @@ export class CourseFormComponent implements OnInit {
 
   onSubmit() {
     console.log(this.form.value);
+
     this.coursesService.save(this.form.value).subscribe({
       next: () => this.onSuccess(),
       error: () => this.onError(),
